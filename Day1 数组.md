@@ -1,4 +1,4 @@
-# Day1 数组
+# Day1 数组，704. 二分查找，27. 移除元素
 
 ## [704. 二分查找](https://leetcode.cn/problems/binary-search/)
 
