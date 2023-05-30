@@ -105,6 +105,8 @@ class Solution {
 如果 n 是 快乐数 就返回 true ；不是，则返回 false 。
 
 ```java
+时间：O(logn)
+空间：O(logn)
 class Solution {
     public boolean isHappy(int n) {
         Set<Integer> set = new HashSet<>();//判断是否有重复数字出现是本题解题关键，很难看出来
