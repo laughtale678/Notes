@@ -189,5 +189,45 @@ class Solution {
 ```
 
 ```java
+递归：我之前一直错误理解这个是前序遍历，看了视频发现这是后序遍历，之前一直把base case当成了一次处理头节点，root == null 表达式表示树不存在或者树为空（没有根节点）。在这种情况下，可以理解为没有需要遍历的节点，因此可以将其视为终止条件。
+时间：O(n)
+空间：o(n)
+class Solution {
+    public int countNodes(TreeNode root) {
+        if(root == null) return 0;
+        int left = countNodes(root.left);
+        int right = countNodes(root.right);
+        return left + right + 1;     
+    }
+}
+```
+
+```java
+这个想不出来，贴过来参考学习
+class Solution {
+    /**
+     * 针对完全二叉树的解法
+     *
+     * 满二叉树的结点数为：2^depth - 1
+     */
+    public int countNodes(TreeNode root) {
+        if (root == null) return 0;
+        TreeNode left = root.left;
+        TreeNode right = root.right;
+        int leftDepth = 0, rightDepth = 0; // 这里初始为0是有目的的，为了下面求指数方便
+        while (left != null) {  // 求左子树深度
+            left = left.left;
+            leftDepth++;
+        }
+        while (right != null) { // 求右子树深度
+            right = right.right;
+            rightDepth++;
+        }
+        if (leftDepth == rightDepth) {
+            return (2 << leftDepth) - 1; // 注意(2<<1) 相当于2^2，所以leftDepth初始为0
+        }
+        return countNodes(root.left) + countNodes(root.right) + 1;
+    }
+}
 ```
 
